@@ -417,7 +417,7 @@ public class SystemBarTintManager {
             if (resourceId != 0) {
                 boolean hasNav = res.getBoolean(resourceId);
                 // check override flag (see static block)
-                if ("1".equals(sNavBarOverride)) {
+                if ("guide_image_1".equals(sNavBarOverride)) {
                     hasNav = false;
                 } else if ("0".equals(sNavBarOverride)) {
                     hasNav = true;
