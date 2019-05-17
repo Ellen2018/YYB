@@ -3,9 +3,9 @@ package com.ellen.yyb.ui.splash;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.ellen.yyb.mvp.BaseModel;
-import com.ellen.yyb.mvp.BasePresenter;
-import com.ellen.yyb.mvp.BaseView;
+import com.ellen.yyb.mvp.activity.BaseModel;
+import com.ellen.yyb.mvp.activity.BasePresenter;
+import com.ellen.yyb.mvp.activity.BaseView;
 
 public interface SplashAgree {
 

@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseActivity;
-import com.ellen.yyb.mvp.BaseMvpActivity;
+import com.ellen.yyb.mvp.activity.BaseMvpActivity;
 import com.ellen.yyb.ui.main.MainActivity;
 import com.ellen.yyb.ui.splash.SplashActivity;
 import com.ellen.yyb.util.statusutil.StatusUtils;

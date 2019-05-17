@@ -3,9 +3,9 @@ package com.ellen.yyb.ui.guide;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
-import com.ellen.yyb.mvp.BaseModel;
-import com.ellen.yyb.mvp.BasePresenter;
-import com.ellen.yyb.mvp.BaseView;
+import com.ellen.yyb.mvp.activity.BaseModel;
+import com.ellen.yyb.mvp.activity.BasePresenter;
+import com.ellen.yyb.mvp.activity.BaseView;
 
 import me.relex.circleindicator.CircleIndicator;
 

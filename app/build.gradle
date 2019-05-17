@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -50,5 +49,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
 
     implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
+
+    implementation 'com.github.Ellen2018:ARuiBingSQLite:1.0.1'
 
 }

@@ -1,4 +1,4 @@
-package com.ellen.yyb.mvp;
+package com.ellen.yyb.mvp.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

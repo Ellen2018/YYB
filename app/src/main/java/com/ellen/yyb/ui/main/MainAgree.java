@@ -1,8 +1,8 @@
 package com.ellen.yyb.ui.main;
 
-import com.ellen.yyb.mvp.BaseModel;
-import com.ellen.yyb.mvp.BasePresenter;
-import com.ellen.yyb.mvp.BaseView;
+import com.ellen.yyb.mvp.activity.BaseModel;
+import com.ellen.yyb.mvp.activity.BasePresenter;
+import com.ellen.yyb.mvp.activity.BaseView;
 
 public interface MainAgree {
 
@@ -29,7 +29,6 @@ public interface MainAgree {
         abstract String[] getBottomBarTitleArray();
         //获取底部导航栏的图片数组
         abstract int[] getBottomBarIconArray();
-
     }
 
 }

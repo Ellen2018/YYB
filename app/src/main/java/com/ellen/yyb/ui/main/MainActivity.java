@@ -5,9 +5,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseActivity;
 import com.ellen.yyb.base.BaseFragment;
-import com.ellen.yyb.mvp.BaseMvpActivity;
+import com.ellen.yyb.mvp.activity.BaseMvpActivity;
 import com.ellen.yyb.ui.main.fragment.CommunityFragment;
-import com.ellen.yyb.ui.main.fragment.NewsFragment;
+import com.ellen.yyb.ui.main.fragment.news.NewsFragment;
 import com.ellen.yyb.ui.main.fragment.UserCenterFragment;
 import com.ellen.yyb.ui.main.fragment.VideoFragment;
 
@@ -81,7 +81,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
     @Override
     public void initMvp() {
         mPresenter = new MainPresenter();
-        mPresenter.mModel = new MainModel();
+        mPresenter.mModel = new MainModel(this);
         mPresenter.mView = this;
     }
 
