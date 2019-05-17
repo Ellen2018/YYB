@@ -1,22 +1,19 @@
 package com.ellen.yyb.ui.main.fragment.news;
 
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseFragment;
 import com.ellen.yyb.bean.NewsTitle;
-import com.ellen.yyb.helper.GsonHelper;
 import com.ellen.yyb.mvp.fragment.BaseMvpFragment;
-import com.ellen.yyb.ui.main.fragment.SmileNewsFragment;
+import com.ellen.yyb.ui.main.fragment.news.new_fragment.SmileNewsFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-import java.io.IOException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -86,5 +83,10 @@ public class NewsFragment extends BaseMvpFragment<NewsFragmentPresenter> impleme
             }
         });
         tabLayout.setViewPager(viewPager);
+    }
+
+    @Override
+    public void requestNewsTitleFailure() {
+        Toast.makeText(getActivity(),"获取网络数据失败",Toast.LENGTH_SHORT).show();
     }
 }

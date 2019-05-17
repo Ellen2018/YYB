@@ -1,4 +1,4 @@
-package com.ellen.yyb.ui.main.fragment;
+package com.ellen.yyb.ui.main.fragment.news.new_fragment;
 
 import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseFragment;

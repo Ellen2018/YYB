@@ -1,6 +1,6 @@
 package com.ellen.yyb.ui.main.fragment.news;
 
-import android.os.Message;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -16,12 +16,11 @@ public class NewsFragmentModel implements NewsFragmentAgree.NewsFragmentAgreeMod
     private String newTitleUrl = "http://m.news.cntv.cn/special/json/fl626/index.json";
 
     @Override
-    public String getNewsTitle() throws IOException {
+    public void  getNewsTitle(Callback callback){
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request = new Request.Builder().url(newTitleUrl).get().build();
         Call call = okHttpClient.newCall(request);
-        Response response = call.execute();
-        return response.body().string();
+        call.enqueue(callback);
     }
 
 }

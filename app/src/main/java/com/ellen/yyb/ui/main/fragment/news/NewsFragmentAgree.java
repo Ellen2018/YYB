@@ -11,15 +11,16 @@ import java.util.List;
 public interface NewsFragmentAgree {
 
     interface NewsFragmentAgreeModel extends BaseFragmentModel{
-        String getNewsTitle() throws IOException;
+        void getNewsTitle(okhttp3.Callback callback);
     }
 
     interface NewsFragmentAgreeView extends BaseFragmentView{
         void updateNewTitle(List<NewsTitle.DataBean> dataBeanList);
+        void requestNewsTitleFailure();
     }
 
     abstract class NewsFragmentAgreePresenter extends BaseFragmentPresenter<NewsFragmentAgreeModel,NewsFragmentAgreeView>{
-
+       //访问网络获取News Title的数据
        abstract void requestNewsTitleFromNet();
 
     }

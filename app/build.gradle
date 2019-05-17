@@ -50,6 +50,4 @@ dependencies {
 
     implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
 
-    implementation 'com.github.Ellen2018:ARuiBingSQLite:1.0.1'
-
 }

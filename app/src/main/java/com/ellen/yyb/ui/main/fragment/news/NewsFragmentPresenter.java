@@ -1,7 +1,11 @@
 package com.ellen.yyb.ui.main.fragment.news;
 
+import android.util.Log;
+
 import com.ellen.yyb.bean.NewsTitle;
 import com.ellen.yyb.helper.GsonHelper;
+
+import java.io.IOException;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -10,6 +14,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class NewsFragmentPresenter extends NewsFragmentAgree.NewsFragmentAgreePresenter {
     @Override
@@ -17,10 +24,20 @@ public class NewsFragmentPresenter extends NewsFragmentAgree.NewsFragmentAgreePr
         Observable.create(new ObservableOnSubscribe<String>() {
 
                               @Override
-                              public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                                  String json = mFragmentModel.getNewsTitle();
-                                  emitter.onNext(json);
-                                  emitter.onComplete();
+                              public void subscribe(final ObservableEmitter<String> emitter) throws Exception {
+                                  mFragmentModel.getNewsTitle(new Callback() {
+                                      @Override
+                                      public void onFailure(Call call, IOException e) {
+                                          emitter.onNext("");
+                                          emitter.onComplete();
+                                      }
+
+                                      @Override
+                                      public void onResponse(Call call, Response response) throws IOException {
+                                          emitter.onNext(response.body().string());
+                                          emitter.onComplete();
+                                      }
+                                  });
                               }
                           }
         ).subscribeOn(Schedulers.io())
@@ -33,7 +50,12 @@ public class NewsFragmentPresenter extends NewsFragmentAgree.NewsFragmentAgreePr
 
                     @Override
                     public void onNext(String s) {
-                       mFragmentView.updateNewTitle(GsonHelper.getGsonInstance().fromJson(s, NewsTitle.class).getData());
+                        if(s == ""){
+                            //请求网络数据失败
+                            mFragmentView.requestNewsTitleFailure();
+                        }else {
+                            mFragmentView.updateNewTitle(GsonHelper.getGsonInstance().fromJson(s, NewsTitle.class).getData());
+                        }
                     }
 
                     @Override

@@ -81,7 +81,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
     @Override
     public void initMvp() {
         mPresenter = new MainPresenter();
-        mPresenter.mModel = new MainModel(this);
+        mPresenter.mModel = new MainModel();
         mPresenter.mView = this;
     }
 
