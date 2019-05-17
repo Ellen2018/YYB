@@ -18,7 +18,7 @@ public class VideoFragment extends BaseFragment implements BaseFragment.ButterKn
 
     @Override
     protected int setLayout() {
-        return R.layout.fragment_video;
+        return R.layout.fragment_video_main;
     }
 
     @Override

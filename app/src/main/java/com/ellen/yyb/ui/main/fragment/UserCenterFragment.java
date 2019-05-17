@@ -18,7 +18,7 @@ public class UserCenterFragment extends BaseFragment implements BaseFragment.But
 
     @Override
     protected int setLayout() {
-        return R.layout.fragment_user_center;
+        return R.layout.fragment_user_center_main;
     }
 
     @Override

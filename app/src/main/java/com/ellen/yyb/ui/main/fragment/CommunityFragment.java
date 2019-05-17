@@ -18,7 +18,7 @@ public class CommunityFragment extends BaseFragment implements BaseFragment.Butt
 
     @Override
     protected int setLayout() {
-        return R.layout.fragment_community;
+        return R.layout.fragment_community_main;
     }
 
     @Override
