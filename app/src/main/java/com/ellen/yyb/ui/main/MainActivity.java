@@ -13,6 +13,7 @@ import com.ellen.yyb.ui.main.fragment.video.VideoFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jzvd.JZVideoPlayer;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements
         MainAgree.MainAgreeView, BaseActivity.ButterKnifeInterface {
@@ -118,5 +119,13 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
         }else {
             getSupportFragmentManager().beginTransaction().show(currentFragment).commit();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (JZVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
     }
 }
