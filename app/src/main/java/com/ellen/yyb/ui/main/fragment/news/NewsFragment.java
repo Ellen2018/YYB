@@ -3,6 +3,7 @@ package com.ellen.yyb.ui.main.fragment.news;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Toast;
@@ -66,20 +67,23 @@ public class NewsFragment extends BaseMvpFragment<NewsFragmentPresenter> impleme
         mFragmentPresenter.mFragmentView = this;
     }
 
+    private BaseFragment currentFragment;
+
     @Override
     public void updateNewTitle(final List<NewsTitle.DataBean> dataBeanList) {
-        viewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
+
+        viewPager.setAdapter(new FragmentStatePagerAdapter(getFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
                 String itemType = dataBeanList.get(i).getItemType();
                 if (getString(R.string.item_type_news).equals(itemType)) {
-                    return new ItemTypeNewsFragment(dataBeanList.get(i));
+                    return currentFragment = new ItemTypeNewsFragment(dataBeanList.get(i));
                 } else if (getString(R.string.item_type_cnews).equals(itemType)) {
-                    return new ItemTypeCNewsFragment();
+                    return currentFragment = new ItemTypeCNewsFragment();
                 } else if (getString(R.string.item_type_web).equals(itemType)) {
-                    return new ItemTypeWebFragment(dataBeanList.get(i).getUrl());
+                    return currentFragment = new ItemTypeWebFragment(dataBeanList.get(i).getUrl());
                 } else if(getString(R.string.item_type_bigimgitl).equals(itemType)){
-                    return new ItemTypeBigimagitlFragment();
+                    return currentFragment = new ItemTypeBigimagitlFragment();
                 }else {
                     return null;
                 }

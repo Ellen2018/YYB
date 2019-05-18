@@ -9,7 +9,7 @@ import com.ellen.yyb.mvp.activity.BaseMvpActivity;
 import com.ellen.yyb.ui.main.fragment.CommunityFragment;
 import com.ellen.yyb.ui.main.fragment.news.NewsFragment;
 import com.ellen.yyb.ui.main.fragment.UserCenterFragment;
-import com.ellen.yyb.ui.main.fragment.VideoFragment;
+import com.ellen.yyb.ui.main.fragment.video.VideoFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,7 +75,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements
 
     @Override
     protected Boolean isSetVerticalScreen() {
-        return null;
+        return true;
     }
 
     @Override

@@ -13,7 +13,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(setLayout(), container, false);
+        View view = LayoutInflater.from(getActivity()).inflate(setLayout(), null);
         if(this instanceof ButterKnifeInterface){
             ButterKnifeInterface butterKnifeInterface = (ButterKnifeInterface) this;
             butterKnifeInterface.initButterKnife(view);
