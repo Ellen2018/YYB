@@ -36,6 +36,7 @@
         />
 
     <android.support.v4.view.ViewPager
+        android:layout_below="@id/smarttablayout_fragment_news_main"
         android:id="@+id/viewpager_fragment_news_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

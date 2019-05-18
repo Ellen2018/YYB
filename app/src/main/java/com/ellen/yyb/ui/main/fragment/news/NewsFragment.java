@@ -11,7 +11,10 @@ import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseFragment;
 import com.ellen.yyb.bean.NewsTitle;
 import com.ellen.yyb.mvp.fragment.BaseMvpFragment;
-import com.ellen.yyb.ui.main.fragment.news.new_fragment.SmileNewsFragment;
+import com.ellen.yyb.ui.main.fragment.news.itemtype.bigimgitl.ItemTypeBigimagitlFragment;
+import com.ellen.yyb.ui.main.fragment.news.itemtype.cnews.ItemTypeCNewsFragment;
+import com.ellen.yyb.ui.main.fragment.news.itemtype.news.ItemTypeNewsFragment;
+import com.ellen.yyb.ui.main.fragment.news.itemtype.web.ItemTypeWebFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.List;
@@ -21,7 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class NewsFragment extends BaseMvpFragment<NewsFragmentPresenter> implements
-        NewsFragmentAgree.NewsFragmentAgreeView,BaseFragment.ButterKnifeInterface {
+        NewsFragmentAgree.NewsFragmentAgreeView, BaseFragment.ButterKnifeInterface {
 
     private Unbinder unbinder;
 
@@ -48,12 +51,12 @@ public class NewsFragment extends BaseMvpFragment<NewsFragmentPresenter> impleme
 
     @Override
     public void initButterKnife(View view) {
-       unbinder = ButterKnife.bind(this,view);
+        unbinder = ButterKnife.bind(this, view);
     }
 
     @Override
     public void unBindButterKnife() {
-       unbinder.unbind();
+        unbinder.unbind();
     }
 
     @Override
@@ -68,7 +71,18 @@ public class NewsFragment extends BaseMvpFragment<NewsFragmentPresenter> impleme
         viewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
-                return new SmileNewsFragment();
+                String itemType = dataBeanList.get(i).getItemType();
+                if (getString(R.string.item_type_news).equals(itemType)) {
+                    return new ItemTypeNewsFragment(dataBeanList.get(i));
+                } else if (getString(R.string.item_type_cnews).equals(itemType)) {
+                    return new ItemTypeCNewsFragment();
+                } else if (getString(R.string.item_type_web).equals(itemType)) {
+                    return new ItemTypeWebFragment(dataBeanList.get(i).getUrl());
+                } else if(getString(R.string.item_type_bigimgitl).equals(itemType)){
+                    return new ItemTypeBigimagitlFragment();
+                }else {
+                    return null;
+                }
             }
 
             @Override
@@ -87,6 +101,6 @@ public class NewsFragment extends BaseMvpFragment<NewsFragmentPresenter> impleme
 
     @Override
     public void requestNewsTitleFailure() {
-        Toast.makeText(getActivity(),"获取网络数据失败",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "获取网络数据失败", Toast.LENGTH_SHORT).show();
     }
 }

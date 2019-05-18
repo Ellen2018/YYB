@@ -1,9 +1,9 @@
-package com.ellen.yyb.ui.main.fragment.news.new_fragment;
+package com.ellen.yyb.ui.main.fragment.news.itemtype.bigimgitl;
 
 import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseFragment;
 
-public class SmileNewsFragment extends BaseFragment {
+public class ItemTypeBigimagitlFragment extends BaseFragment {
     @Override
     protected void initData() {
 
@@ -16,6 +16,6 @@ public class SmileNewsFragment extends BaseFragment {
 
     @Override
     protected int setLayout() {
-        return R.layout.fragment_smile_news;
+        return R.layout.fragment_news_item_type_bigimagitl;
     }
 }
