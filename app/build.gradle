@@ -56,4 +56,8 @@ dependencies {
 
     implementation 'com.android.support:cardview-v7:28.0.0'
 
+    api 'com.just.agentweb:agentweb:4.0.3-alpha@aar'
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YYB</string>
+    <string name="app_name">娱音宝</string>
     <string name="item_type_cnews">cnews_flag</string>
     <string name="item_type_news">news_flag</string>
     <string name="item_type_web">web_url_flag</string>

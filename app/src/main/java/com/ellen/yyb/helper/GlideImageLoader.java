@@ -5,6 +5,12 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.ellen.yyb.R;
+import com.ellen.yyb.helper.glide.GlideRoundTransform;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.youth.banner.loader.ImageLoader;
 
 public class GlideImageLoader extends ImageLoader {
@@ -20,7 +26,6 @@ public class GlideImageLoader extends ImageLoader {
 
         //Glide 加载图片简单用法
         Glide.with(context).load(path).into(imageView);
-
     }
 
 }

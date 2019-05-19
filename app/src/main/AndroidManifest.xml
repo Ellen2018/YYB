@@ -30,6 +30,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.splash.SplashActivity"/>
+        <activity android:name=".ui.news_details.NewsDetailsActivity" />
 
     </application>
 

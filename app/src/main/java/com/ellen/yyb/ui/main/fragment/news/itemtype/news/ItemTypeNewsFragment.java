@@ -1,6 +1,7 @@
 package com.ellen.yyb.ui.main.fragment.news.itemtype.news;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,6 +17,10 @@ import com.ellen.yyb.bean.NewsTitle;
 import com.ellen.yyb.helper.GsonHelper;
 import com.ellen.yyb.mvp.fragment.BaseMvpFragment;
 import com.ellen.yyb.ui.main.fragment.news.itemtype.news.adapter.ItemTypeNewsRecyclerViewAdapter;
+import com.ellen.yyb.ui.news_details.NewsDetailsActivity;
+import com.ellen.yyb.ui.news_details.NewsDetailsAgree;
+import com.ellen.yyb.ui.news_details.NewsDetailsModel;
+import com.ellen.yyb.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,10 +83,19 @@ public class ItemTypeNewsFragment extends BaseMvpFragment<ItemTypeNewsFragmentPr
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         itemTypeNewsRecyclerViewAdapter = new ItemTypeNewsRecyclerViewAdapter(getActivity(),newsBean);
         recyclerView.setAdapter(itemTypeNewsRecyclerViewAdapter);
-        itemTypeNewsRecyclerViewAdapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener() {
+        itemTypeNewsRecyclerViewAdapter.setOnItemClickListener(new ItemTypeNewsRecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(RecyclerView.ViewHolder viewHolder, int position) {
-                Toast.makeText(getActivity(),"点击了"+position,Toast.LENGTH_SHORT).show();
+            public void onClick(int position,String chooseUrl) {
+                Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+                intent.putExtra(NewsDetailsModel.NEWS_DETAILS_URL,chooseUrl);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onBannerClick(int position, String chooseUrl) {
+                Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+                intent.putExtra(NewsDetailsModel.NEWS_DETAILS_URL,chooseUrl);
+                startActivity(intent);
             }
         });
     }
