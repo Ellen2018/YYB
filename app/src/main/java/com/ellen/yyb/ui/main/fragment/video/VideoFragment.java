@@ -29,7 +29,7 @@ public class VideoFragment extends BaseMvpFragment<VideoFragmentPresenter> imple
 
     @Override
     protected void initData() {
-       //先加载以及缓存过的数据
+       //先加载已经缓存过的数据
        mFragmentPresenter.laodSavedData();
        mFragmentPresenter.requestVideoJson();
     }
