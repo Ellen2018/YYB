@@ -28,6 +28,7 @@ public class NewsFragmentPresenter extends NewsFragmentAgree.NewsFragmentAgreePr
                                   mFragmentModel.getNewsTitle(new Callback() {
                                       @Override
                                       public void onFailure(Call call, IOException e) {
+                                          Log.e("错误信息",e.getMessage());
                                           emitter.onNext("");
                                           emitter.onComplete();
                                       }

@@ -91,7 +91,7 @@ public class ItemTypeNewsRecyclerViewAdapter extends BaseMultipleRecyclerViewAda
                     onItemClickListener.onBannerClick(position,newsBean.getData().getBigImg().get(position).getDetailUrl());
                 }
             });
-            bannerViewHolder.banner.setDelayTime(2000);
+            bannerViewHolder.banner.setDelayTime(5000);
             bannerViewHolder.banner.start();
         }else {
             ItemViewHolder itemViewHolder = (ItemViewHolder) baseViewHolder;
