@@ -7,10 +7,13 @@ import android.view.View;
 
 import com.ellen.yyb.R;
 import com.ellen.yyb.base.BaseFragment;
+import com.ellen.yyb.bean.TrailersBean;
 import com.ellen.yyb.bean.Video;
 import com.ellen.yyb.helper.GsonHelper;
 import com.ellen.yyb.mvp.fragment.BaseMvpFragment;
 import com.ellen.yyb.ui.main.fragment.video.adapter.VideoRecyclerViewAdapter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +29,8 @@ public class VideoFragment extends BaseMvpFragment<VideoFragmentPresenter> imple
 
     @Override
     protected void initData() {
+       //先加载以及缓存过的数据
+       mFragmentPresenter.laodSavedData();
        mFragmentPresenter.requestVideoJson();
     }
 
@@ -52,20 +57,28 @@ public class VideoFragment extends BaseMvpFragment<VideoFragmentPresenter> imple
     @Override
     protected void initMvp() {
         mFragmentPresenter = new VideoFragmentPresenter();
-        mFragmentPresenter.mFragmentModel = new VideoFragmentModel();
+        mFragmentPresenter.mFragmentModel = new VideoFragmentModel(getActivity());
         mFragmentPresenter.mFragmentView = this;
     }
 
     @Override
     public void updateVideoData(String json) {
-        Log.e("请求的Json数据",json);
         Video video = GsonHelper.getGsonInstance().fromJson(json,Video.class);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new VideoRecyclerViewAdapter(getActivity(),video.getTrailers()));
+        //缓存数据
+        mFragmentPresenter.saveData(video);
     }
 
     @Override
     public void requestDataError(String errMessage) {
 
     }
+
+    @Override
+    public void loadSavedData(Video video) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new VideoRecyclerViewAdapter(getActivity(),video.getTrailers()));
+    }
+
 }

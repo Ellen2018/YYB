@@ -1,9 +1,14 @@
 package com.ellen.yyb.ui.main.fragment.video;
 
+import android.util.Log;
+
 import com.ellen.yyb.bean.NewsTitle;
+import com.ellen.yyb.bean.TrailersBean;
+import com.ellen.yyb.bean.Video;
 import com.ellen.yyb.helper.GsonHelper;
 
 import java.io.IOException;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -67,4 +72,20 @@ public class VideoFragmentPresenter extends VideoFragmentAgree.VideoFragmentAgre
                     }
                 });
     }
+
+    @Override
+    void laodSavedData() {
+        Video video = mFragmentModel.getSavedData();
+        if(video != null) {
+            mFragmentView.loadSavedData(video);
+        }else {
+            Log.e("无缓存数据","哈哈");
+        }
+    }
+
+    @Override
+    void saveData(Video video) {
+        mFragmentModel.saveData(video);
+    }
+
 }
